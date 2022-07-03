@@ -1,4 +1,5 @@
 from conversion import *
+from log import log
 from math import pi
 
 def findTheta(dist, distUnits, bow, arrow, startTheta=0, startThetaUnits='deg'):
@@ -21,11 +22,11 @@ def findTheta(dist, distUnits, bow, arrow, startTheta=0, startThetaUnits='deg'):
     theta += thetaStep
     projection = bow.launch(arrow, theta, 'rad')
     x = projection['x']
-    # print('meters =', meters)
-    # print('x = ', x)
-    # print('theta = ', toDegrees(theta, 'rad'))
-    # print('thetaStep = ', toDegrees(thetaStep, 'rad'))
+    log('meters =', meters)
+    log('x = ', x)
+    log('theta = ', toDegrees(theta, 'rad'))
+    log('thetaStep = ', toDegrees(thetaStep, 'rad'))
 
-  # print('theta(%dyds) = %fdeg' % (toYards(dist, distUnits), toDegrees(theta, 'rad')))
+  log('theta(%dyds) = %fdeg' % (toYards(dist, distUnits), toDegrees(theta, 'rad')))
 
   return theta

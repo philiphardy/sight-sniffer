@@ -1,4 +1,5 @@
 from conversion import *
+from log import log
 from math import sqrt
 from projectile import Projectile
 
@@ -8,7 +9,7 @@ class Bow:
 
   def launch(self, arrow, theta, thetaUnits):
     vMag = sqrt(2 * self.workOnArrow / arrow.mass)
-    # print('arrow launched at %fm/s' % vMag)
+    log('arrow launched at %fm/s' % vMag)
     proj = Projectile(0, 0, theta, thetaUnits, vMag, arrow.Cd, arrow.Ax, arrow.Ay, arrow.mass)
     return proj.start(0.0001)
    

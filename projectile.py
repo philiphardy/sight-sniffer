@@ -1,4 +1,5 @@
 from conversion import *
+from log import log
 from math import cos, sin
 
 p = 1.225
@@ -17,10 +18,10 @@ class Projectile:
     self.m = m
     self.Dx = p * Cd * Ax / 2
     self.Dy = p * Cd * Ay / 2
-    # print('projectile initial x-velocity will be %fm/s' % self.vx0)
-    # print('projectile initial y-velocity will be %fm/s' % self.vy0)
+    log('projectile initial x-velocity will be %fm/s' % self.vx0)
+    log('projectile initial y-velocity will be %fm/s' % self.vy0)
 
-  def start(self, step):
+  def start(self, step: int) -> dict:
     t = 0
     vx = self.vx0
     vy = self.vy0
@@ -37,12 +38,12 @@ class Projectile:
       x += vx * step + (ax / 2) * step ** 2
       y += vy * step + (ay / 2) * step ** 2
       t += step
-      # print('ay = %f' % ay)
-      # print('ax = %f' % ax)
-      # print('vx = %f' % vx)
-      # print('vy = %f' % vy)
-      # print('y(%f) = %f' % (t, y))
-      # print('x(%f) = %f' % (t, x))
+      log('ay = %f' % ay)
+      log('ax = %f' % ax)
+      log('vx = %f' % vx)
+      log('vy = %f' % vy)
+      log('y(%f) = %f' % (t, y))
+      log('x(%f) = %f' % (t, x))
 
-    # print('x(%f) = %f, y(%f) = %f' % (t, x, t, y))
+    log('x(%f) = %f, y(%f) = %f' % (t, x, t, y))
     return { 't': t, 'ax': ax, 'ay': ay, 'vy': vy, 'vx': vx, 'x': x, 'y': y, 'step': step, 'launchRad': self.launchRad }
